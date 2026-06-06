@@ -1,26 +1,335 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  VS Agency — design tokens (per build plan)                        */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #050505;
+  --bg-2: #0a0a0a;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-hover: rgba(255, 255, 255, 0.06);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.18);
+
+  --text: #ffffff;
+  --text-2: #a3a3a3;
+  --text-muted: #666666;
+
+  --blue: #3b82f6;
+  --violet: #8b5cf6;
+  --glow: rgba(59, 130, 246, 0.45);
+
+  /* fluid type scale */
+  --fs-hero: clamp(2.75rem, 1.6rem + 5.8vw, 7.5rem); /* 44 → 120 */
+  --fs-h2: clamp(2.25rem, 1.4rem + 4.2vw, 5.375rem); /* 36 → 86 */
+  --fs-h3: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  --fs-body: clamp(1rem, 0.9rem + 0.5vw, 1.375rem); /* 16 → 22 */
+  --fs-label: clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem); /* 12 → 14 */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-muted: var(--text-muted);
+  --color-blue: var(--blue);
+  --color-violet: var(--violet);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  color: var(--text);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable premium primitives                                       */
+/* ------------------------------------------------------------------ */
+
+/* glassmorphism card */
+.glass {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: border-color 0.4s ease, transform 0.4s ease, background 0.4s ease;
+}
+.glass:hover {
+  border-color: var(--line-strong);
+  background: var(--card-hover);
+}
+
+/* line-reveal mask for headings: hides the upward wipe without shaving
+   glyph tops/bottoms (tight leading) or word edges (overflow). The negative
+   margins cancel the padding so layout spacing is unchanged. */
+.reveal-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.18em 0.06em;
+  margin: -0.18em -0.06em;
+}
+
+/* cycling-word mask: clips the vertical slide of the rotating hero word.
+   Mirrors .reveal-line's padding/negative-margin trick so glyph tops/bottoms
+   aren't shaved and layout spacing stays unchanged. */
+.cycling-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0.18em 0.06em;
+  margin: -0.18em -0.06em;
+}
+.cycling-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* gradient-filled text, reliably clipped to the glyphs (webkit + standard).
+   Tailwind v4's bg-clip-text omits the -webkit- prefix Chrome/Safari need. */
+.text-gradient {
+  background-image: linear-gradient(95deg, #ffffff 0%, #b9ccff 45%, #6f9bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* small uppercase label */
+.eyebrow {
+  font-size: var(--fs-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+/* fixed film-grain overlay (apply to a fixed element) */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+}
+
+/* primary / secondary buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.6rem;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.btn-primary {
+  background: #fff;
+  color: #000;
+}
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px var(--glow);
+}
+
+/* shimmer — only the header CTA button */
+.btn-cta-nav.btn-light {
+  background: #fff;
+  color: #000;
+}
+.btn-cta-nav {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #fff;
+}
+.btn-cta-nav::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 18%,
+    rgba(29, 78, 216, 0.20) 32%,
+    rgba(59, 130, 246, 0.65) 44%,
+    rgba(99, 160, 255, 0.80) 50%,
+    rgba(59, 130, 246, 0.65) 56%,
+    rgba(29, 78, 216, 0.20) 68%,
+    transparent 82%
+  );
+  filter: blur(3px);
+  pointer-events: none;
+  animation: btn-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes btn-shimmer {
+  0%   { transform: translateX(-220%); }
+  35%  { transform: translateX(220%); }
+  100% { transform: translateX(220%); }
+}
+.btn-secondary {
+  border: 1px solid var(--line-strong);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Text legibility + snake "illumination"                            */
+/* ------------------------------------------------------------------ */
+/* Base readability shadow: a soft dark halo lifts text off the busy
+   3D / gradient background in the dark theme. */
+h2, [data-lumen] {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+}
+/* In the white phase the text is dark — a soft WHITE halo separates it from
+   the royal-blue snake passing behind it, plus a faint dark drop for crispness. */
+.light-bg h2,
+.light-bg [data-lumen] {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.85), 0 1px 2px rgba(0, 0, 0, 0.16);
+}
+
+/* Snake-driven legibility. StrokeTrail sets --lumen (0→1) per element based on
+   how close the snake currently is. When the snake touches the text it should
+   become MORE legible — NOT blurry and NOT lighter. So we keep the dark colour
+   and add a TIGHT white outline that strengthens with --lumen, making the
+   letters pop crisply off the blue body. */
+[data-lumen] {
+  --lumen: 0;
+}
+/* Touched by the snake → the letters turn light blue (only while touched), with
+   a tight white halo so they stay crisp. Untouched (--lumen 0) → normal colour. */
+.light-bg [data-lumen] {
+  color: color-mix(in srgb, var(--text-2), #4f8bff calc(var(--lumen) * 92%));
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, calc(0.4 + var(--lumen) * 0.5)),
+    0 0 calc(2px + var(--lumen) * 4px) rgba(255, 255, 255, calc(0.45 + var(--lumen) * 0.35)),
+    0 1px 2px rgba(0, 0, 0, 0.16);
+}
+.light-bg h2[data-lumen],
+.light-bg h2 [data-lumen] {
+  color: color-mix(in srgb, var(--text), #4f8bff calc(var(--lumen) * 92%));
+}
+
+/* ------------------------------------------------------------------ */
+/*  Light-background theme (scroll-driven white phase)               */
+/* ------------------------------------------------------------------ */
+.light-bg {
+  --text: #0a0a0a;
+  --text-2: #444444;
+  --text-muted: #777777;
+  --card: rgba(0, 0, 0, 0.05);
+  --card-hover: rgba(0, 0, 0, 0.08);
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth, simultaneous colour swap as the white overlay fades in/out, so the
+   text turns black together with the whiteout instead of snapping. */
+body,
+h1, h2, h3, p,
+[data-chip],
+[data-metric],
+[data-mini] p {
+  transition: color 0.5s ease, background-color 0.5s ease,
+    border-color 0.5s ease;
+}
+
+/* Hardcoded white text on floating chips / metrics */
+.light-bg [data-chip],
+.light-bg [data-metric] {
+  color: rgba(10, 10, 10, 0.85) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Edit service cards stay dark/black even in the light-bg phase */
+.light-bg [data-mini] {
+  background: rgba(10, 10, 10, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+.light-bg [data-mini] p {
+  color: #ffffff !important;
+}
+
+/* Dark reel preview cards preserve white text on their dark gradient bg */
+.light-bg [data-card] {
+  color: white;
+}
+
+/* ------------------------------------------------------------------ */
+/*  LED border animation (Services widgets)                          */
+/* ------------------------------------------------------------------ */
+@property --led-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes led-spin {
+  to { --led-angle: 360deg; }
+}
+
+.led-wrap {
+  padding: 1px;
+  border-radius: 13px;
+  background: conic-gradient(
+    from var(--led-angle) at 50% 50%,
+    rgba(255, 255, 255, 0.06) 0deg,
+    rgba(255, 255, 255, 0.06) 190deg,
+    rgba(59, 130, 246, 0.5)   225deg,
+    rgba(147, 197, 253, 0.9)  248deg,
+    #ffffff                   258deg,
+    rgba(147, 197, 253, 0.9)  268deg,
+    rgba(59, 130, 246, 0.5)   291deg,
+    rgba(255, 255, 255, 0.06) 326deg,
+    rgba(255, 255, 255, 0.06) 360deg
+  );
+  animation: led-spin 4s linear infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Lenis smooth scroll                                               */
+/* ------------------------------------------------------------------ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

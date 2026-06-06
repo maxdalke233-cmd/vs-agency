@@ -1,0 +1,1059 @@
+VS AGENCY — 3D IMMERSIVE STORYTELLING WEBSITE BUILD PLAN FOR CLAUDE CODE
+=======================================================================
+
+PROJECT OVERVIEW
+----------------
+Build a complete premium homepage for “VS Agency”, a video/content agency that creates high-performing short-form videos for Instagram accounts, creators, personal brands and local businesses.
+
+The website should feel like a cinematic, immersive, Awwwards-level creative agency homepage. It should not look like a normal template landing page.
+
+Main creative idea:
+A realistic 3D cinema camera is the “main character” of the homepage. The camera appears in the hero section and stays present throughout the page. While the user scrolls, the camera moves, rotates, zooms, reveals video frames, transforms the story visually, and guides the visitor through the process of how VS Agency creates content.
+
+The site should use 3D scroll storytelling, GSAP ScrollTrigger, smooth transitions, premium typography, cinematic lighting, dark backgrounds, motion design, floating UI elements, animated video cards and high-end spacing.
+
+The final result should feel like a luxury tech/creative agency website inspired by Apple, Porsche, Awwwards, cinematic production studios, and modern motion design portfolios.
+
+
+BRAND
+-----
+Name: VS Agency
+Industry: Video agency / content agency / social media agency
+Target customers:
+- Instagram accounts
+- creators
+- personal brands
+- local businesses
+- service businesses
+- brands that need short-form content
+
+Core promise:
+VS Agency turns attention into high-performing video content.
+
+Brand feeling:
+- premium
+- cinematic
+- modern
+- dark
+- clean
+- sharp
+- high-end
+- confident
+- not childish
+- not generic
+- not overdecorated
+
+Possible tagline:
+“We Turn Attention Into Content.”
+
+Alternative taglines:
+- “Content That Makes People Stop Scrolling.”
+- “Cinematic Content for Brands That Want Attention.”
+- “From Idea to Scroll-Stopping Video.”
+- “We Build Content Systems for Modern Brands.”
+
+
+TECH STACK
+----------
+Use:
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- Three.js
+- React Three Fiber
+- Drei
+- GSAP
+- ScrollTrigger
+- Lenis for smooth scrolling
+- Framer Motion optional for smaller UI reveals
+
+The website must be responsive and production-ready.
+
+
+CORE TECHNICAL REQUIREMENTS
+---------------------------
+1. Use a clean Next.js project structure.
+2. Use TypeScript for all components.
+3. Use Tailwind CSS for styling.
+4. Use React Three Fiber for the 3D scene.
+5. Use Drei helpers where useful.
+6. Use GSAP ScrollTrigger for scroll-based 3D and DOM animations.
+7. Use Lenis for smooth scrolling.
+8. Use Suspense and lazy loading for 3D assets.
+9. Add a placeholder camera model using basic geometry if no .glb file is available.
+10. Structure the CameraModel component so I can later replace it with a real .glb cinema camera model easily.
+11. Optimize performance for mobile.
+12. Disable or simplify heavy 3D effects on smaller screens.
+13. Avoid cheap animations. Everything should feel smooth, intentional and premium.
+14. Add comments in the code where I can replace images, videos and the camera model.
+
+
+VISUAL DIRECTION
+----------------
+Overall style:
+- dark cinematic background
+- clean white text
+- subtle gradients
+- soft blue/violet glow accents
+- slight film grain/noise overlay
+- premium editorial layout
+- large bold typography
+- lots of whitespace
+- smooth section transitions
+- elegant scroll animations
+
+Colors:
+- Main background: #050505
+- Secondary background: #0A0A0A
+- Card background: rgba(255,255,255,0.04)
+- Border: rgba(255,255,255,0.08)
+- Text primary: #FFFFFF
+- Text secondary: #A3A3A3
+- Text muted: #666666
+- Accent blue: #3B82F6
+- Accent violet: #8B5CF6
+- Glow: rgba(59,130,246,0.45)
+
+Typography:
+Use a modern premium font stack.
+Suggested:
+- Headings: Inter, Satoshi, Neue Montreal, Space Grotesk, or similar
+- Body: Inter or Geist Sans
+
+If using Google Fonts, use:
+- Inter
+- Space Grotesk
+
+Typography feel:
+- huge hero headline
+- tight letter spacing
+- bold but clean
+- large section headlines
+- small uppercase labels
+- subtle animated text reveals
+
+Suggested typography sizes:
+Desktop:
+- Hero headline: 80px to 120px
+- Section headline: 56px to 86px
+- Body: 18px to 22px
+- Small labels: 12px to 14px uppercase
+
+Mobile:
+- Hero headline: 44px to 58px
+- Section headline: 36px to 46px
+- Body: 16px to 18px
+
+
+WEBSITE STRUCTURE
+-----------------
+Build a one-page homepage with these sections:
+
+1. Navbar
+2. Hero
+3. Scroll Story: Capture
+4. Scroll Story: Edit
+5. Scroll Story: Distribute
+6. Results
+7. Services
+8. Case Studies / Work
+9. Process
+10. Final CTA
+11. Footer
+
+The 3D camera should visually connect the sections.
+
+
+SECTION 1 — NAVBAR
+------------------
+Create a fixed transparent navbar at the top.
+
+Navbar content:
+Left:
+- VS Agency logo text
+
+Center/right links:
+- Work
+- Services
+- Process
+- Contact
+
+CTA button:
+- Book a Call
+
+Navbar style:
+- fixed top
+- z-index high
+- transparent at top
+- subtle glass background after scroll
+- backdrop blur
+- border bottom only after scrolling
+- smooth hover states
+
+Mobile:
+- simple logo + menu button
+- dropdown or full-screen mobile menu
+
+
+SECTION 2 — HERO
+----------------
+Purpose:
+Instantly impress the visitor. The first screen must be the strongest visual section.
+
+Layout:
+- Full viewport height
+- Dark cinematic background
+- 3D camera on center/right
+- Big headline on left or center
+- Subheadline under headline
+- CTA buttons
+- subtle scroll indicator
+
+Hero text:
+Eyebrow:
+“VIDEO AGENCY FOR MODERN BRANDS”
+
+Headline:
+“We Turn Attention Into Content.”
+
+Subheadline:
+“VS Agency creates cinematic short-form videos for creators, Instagram accounts and local businesses that want to stand out online.”
+
+CTA buttons:
+Primary: “Start a Project”
+Secondary: “View Work”
+
+Hero 3D camera animation:
+- camera floats slowly
+- rotates slightly on idle
+- reacts subtly to mouse movement
+- has cinematic rim light
+- lens has subtle blue/violet glow
+- background gradient follows mouse slightly
+
+Hero background:
+- radial gradient behind camera
+- subtle noise overlay
+- soft grid or particles optional
+- cinematic vignette
+
+Hero entrance animation:
+- navbar fades in
+- headline lines reveal upward
+- subheadline fades in
+- buttons fade in
+- 3D camera scales in from 0.8 to 1.0 and rotates into place
+
+
+SECTION 3 — SCROLL STORY 1: CAPTURE
+-----------------------------------
+Title:
+“First, we capture the story.”
+
+Eyebrow:
+“01 / CAPTURE”
+
+Text:
+“Every high-performing video starts with a clear idea. We shape the concept, direction and visual language before the edit even begins.”
+
+3D camera behavior:
+- camera moves closer toward the user
+- camera lens turns toward the text
+- lens glow increases slightly
+- small floating labels appear around the camera
+
+Floating labels:
+- Strategy
+- Direction
+- Shooting
+- Ideas
+- Hook
+- Visuals
+
+Animation details:
+- Section can be pinned for 120vh to 160vh
+- As user scrolls, the camera moves from hero position to a closer centered position
+- The lens glow animates from subtle to more visible
+- Labels float in with staggered animation
+- Text reveals line by line
+
+Design:
+- dark background
+- subtle blue light from the camera lens
+- labels as glass chips with border and blur
+
+
+SECTION 4 — SCROLL STORY 2: EDIT
+--------------------------------
+Title:
+“Then we cut it into scroll-stopping content.”
+
+Eyebrow:
+“02 / EDIT”
+
+Text:
+“We turn raw ideas, footage and brand moments into short-form videos designed for retention, rhythm and clarity.”
+
+3D camera behavior:
+- camera rotates slightly to the side
+- camera pulls back
+- vertical video cards start appearing around it
+- video frames feel like they are being generated from the camera
+- cards move with parallax
+
+Floating video cards:
+Create 5-7 vertical reel-style cards around the camera.
+Each card has:
+- dark placeholder thumbnail
+- play icon
+- small category label
+- fake duration
+- hover animation
+
+Card labels:
+- Reel Edit
+- Brand Story
+- Local Business Ad
+- Creator Clip
+- Product Video
+- Hook Test
+
+Animation details:
+- Cards emerge from the camera lens or camera body
+- Cards rotate slightly in 3D space
+- Cards are DOM elements or planes in Three.js, whichever is easier and performant
+- The camera transitions from being the main focus to being part of a content creation system
+
+Service mini-cards in this section:
+1. Short-form Editing
+   Text: “Fast-paced edits built for retention and watch time.”
+2. Instagram Reels
+   Text: “Vertical content designed to stop the scroll.”
+3. Content Strategy
+   Text: “Ideas, hooks and structure before the edit starts.”
+
+
+SECTION 5 — SCROLL STORY 3: DISTRIBUTE
+--------------------------------------
+Title:
+“Built for platforms where attention moves fast.”
+
+Eyebrow:
+“03 / DISTRIBUTE”
+
+Text:
+“Your content does not just need to look good. It needs to move, convert and stay memorable inside the feed.”
+
+3D camera behavior:
+- video cards move into an orbit around the camera
+- the camera becomes the center of a social-media content system
+- floating metrics appear around the orbit
+- camera slowly rotates as if powering the orbit
+
+Floating metrics:
+- +328K Views
+- 18.4K Likes
+- 2.8K Shares
+- 741 Comments
+- 63 Leads
+- 4.7x Reach
+
+Animation details:
+- Cards orbit slowly
+- Metrics pop in with smooth stagger
+- Use GSAP to animate opacity, y position and scale
+- Use parallax based on scroll progress
+- Keep everything smooth, not overwhelming
+
+Important:
+Do not use official Instagram or TikTok logos unless assets are provided. Use generic platform-style icons or text labels.
+
+
+SECTION 6 — RESULTS
+-------------------
+Purpose:
+Show credibility and outcome.
+
+Title:
+“Content that looks good and performs.”
+
+Eyebrow:
+“RESULTS”
+
+Description:
+“From local businesses to creators, our videos are built to make people stop, watch and take action.”
+
+Animated stats:
+1. “+1M”
+   Label: “Views Generated”
+2. “30+”
+   Label: “Videos / Month”
+3. “15+”
+   Label: “Brands Supported”
+4. “4.7x”
+   Label: “Average Reach Lift”
+
+Animation:
+- counters animate when section enters viewport
+- cards fade and rise in stagger
+- subtle glowing border on hover
+
+3D camera behavior:
+- camera moves to side/top corner
+- becomes smaller so the stats can take focus
+- still visible as a visual anchor
+
+
+SECTION 7 — SERVICES
+--------------------
+Purpose:
+Clearly explain what the agency offers.
+
+Title:
+“Everything your content needs.”
+
+Eyebrow:
+“SERVICES”
+
+Service cards:
+1. Short-Form Video Editing
+   Description:
+   “High-retention edits for Reels, TikTok and Shorts with strong hooks, pacing, captions and sound design.”
+
+2. Content Strategy
+   Description:
+   “We plan ideas, hooks, formats and posting angles so your content has a clear purpose before production starts.”
+
+3. Local Business Content
+   Description:
+   “Premium videos for restaurants, barbershops, gyms, car businesses, real estate, events and service providers.”
+
+4. Creator & Personal Brand Clips
+   Description:
+   “Turn long videos, podcasts or raw footage into sharp clips that build audience and trust.”
+
+5. Motion Design
+   Description:
+   “Clean motion graphics, animated titles, transitions and visual effects that make your videos feel premium.”
+
+6. Monthly Content Systems
+   Description:
+   “Consistent content production with planned delivery, feedback loops and repeatable creative systems.”
+
+Design:
+- 2 or 3 column grid on desktop
+- glassmorphism cards
+- hover glow
+- subtle icon or abstract line graphic
+
+Animation:
+- cards reveal on scroll
+- hover lift
+- background light follows cursor optional
+
+
+SECTION 8 — CASE STUDIES / WORK
+-------------------------------
+Purpose:
+Show project previews even if placeholder.
+
+Title:
+“Selected work.”
+
+Eyebrow:
+“WORK”
+
+Description:
+“Examples of content formats we create for brands, creators and local businesses.”
+
+Create 6 project cards:
+1. Barber Brand Reel
+   Category: Local Business
+   Metric: +82K Views
+2. Gym Transformation Ad
+   Category: Fitness
+   Metric: 3.2x Reach
+3. Creator Podcast Clips
+   Category: Personal Brand
+   Metric: 24 Clips Delivered
+4. Restaurant Launch Video
+   Category: Local Business
+   Metric: +41K Views
+5. Car Detailer Campaign
+   Category: Automotive
+   Metric: 19 Leads
+6. Product Promo Reel
+   Category: E-Commerce
+   Metric: +12% CTR
+
+Card design:
+- vertical reel format
+- dark placeholder image/video
+- play button overlay
+- project title bottom left
+- metric top right
+- hover: card lifts, border glows, play overlay becomes visible
+
+Use placeholder videos/images with gradients or simple divs.
+Leave comments where I can replace them with real videos later.
+
+Animation:
+- grid items reveal with stagger
+- cards can have slight 3D tilt on hover
+
+
+SECTION 9 — PROCESS
+-------------------
+Purpose:
+Show how working with VS Agency works.
+
+Title:
+“From idea to published content.”
+
+Eyebrow:
+“PROCESS”
+
+Process steps:
+01 Strategy
+“We define the goal, audience, offer, hooks and content angle.”
+
+02 Production / Assets
+“We collect footage, plan shots or work with your existing videos.”
+
+03 Editing
+“We create polished, fast-paced videos with captions, rhythm and motion.”
+
+04 Feedback
+“You review, comment and approve through a simple workflow.”
+
+05 Posting & Growth
+“We help structure the content for platforms and consistent output.”
+
+Design options:
+- horizontal scroll timeline on desktop
+- vertical stacked timeline on mobile
+- each step appears as a premium card
+
+Animation:
+- pinned horizontal scroll if possible
+- progress line animates as user scrolls
+- cards fade and slide in
+
+3D camera behavior:
+- camera follows process line subtly or becomes a small floating object near timeline
+- optional: camera transitions into a small glowing lens icon at the end
+
+
+SECTION 10 — FINAL CTA
+----------------------
+Purpose:
+End with a strong premium conversion moment.
+
+Title:
+“Ready to make your brand impossible to ignore?”
+
+Description:
+“Let’s build a content system that makes people stop scrolling, remember your brand and take action.”
+
+CTA:
+“Book a Call”
+
+Secondary link:
+“View Our Work”
+
+3D camera behavior:
+- camera returns to the center
+- camera points toward the user
+- lens glow becomes stronger
+- background light expands behind it
+- final subtle rotation idle loop
+
+Design:
+- fullscreen or near fullscreen
+- cinematic centered layout
+- large text
+- glowing CTA button
+
+Animation:
+- final camera position settles smoothly
+- headline reveals with dramatic timing
+- CTA fades in after headline
+
+
+SECTION 11 — FOOTER
+-------------------
+Content:
+- VS Agency
+- Short tagline: “Cinematic content for modern brands.”
+- Links: Work, Services, Process, Contact
+- Social links placeholders: Instagram, TikTok, YouTube
+- Copyright: © 2026 VS Agency. All rights reserved.
+
+Design:
+- clean minimal footer
+- dark background
+- subtle top border
+
+
+3D CAMERA MODEL REQUIREMENTS
+----------------------------
+Create a component called CameraModel.tsx.
+
+If no GLB model exists:
+Build a placeholder cinema camera with simple geometry:
+- main body: rounded box or box geometry
+- lens: cylinder geometry
+- handle: box/torus shapes
+- small viewfinder: box
+- small details: buttons, side plate, top handle
+- use dark materials with roughness and subtle metalness
+- lens material slightly reflective/glossy
+- lens glow using emissive blue/violet material
+
+Important:
+Structure it so a GLB can replace it later.
+Example comment:
+“Replace this placeholder geometry with useGLTF('/models/cinema-camera.glb') when a real model is available.”
+
+Suggested later model search terms:
+- cinema camera glb
+- professional video camera 3d model glb
+- film camera 3d model
+- red camera 3d model glb
+- blackmagic camera 3d model glb
+
+Do not include copyrighted brand logos on the 3D camera.
+
+
+3D SCENE REQUIREMENTS
+---------------------
+Create Scene3D.tsx.
+
+Scene setup:
+- Canvas full-screen or fixed overlay
+- transparent background
+- camera position: [0, 0, 6]
+- ambient light soft
+- key light front/side
+- rim light behind camera
+- point light near lens/accent
+- optional floating particles
+
+The 3D scene should be position: fixed so it can stay visible through multiple sections.
+The DOM sections scroll over/around it.
+
+Use GSAP ScrollTrigger to animate the 3D camera object:
+Properties to animate:
+- position.x
+- position.y
+- position.z
+- rotation.x
+- rotation.y
+- rotation.z
+- scale
+- lens glow intensity if possible
+
+Camera scroll positions:
+Hero:
+position: [1.2, -0.2, 0]
+rotation: [0.05, -0.35, 0]
+scale: 1
+
+Capture:
+position: [0.2, 0, -0.5]
+rotation: [0.08, 0.2, 0]
+scale: 1.2
+
+Edit:
+position: [-0.8, 0.1, -0.2]
+rotation: [0.15, 0.8, -0.05]
+scale: 0.95
+
+Distribute:
+position: [0, 0, -0.8]
+rotation: [0.1, 1.4, 0]
+scale: 0.85
+
+Results:
+position: [1.8, -0.6, -1]
+rotation: [0.2, -0.5, 0.05]
+scale: 0.65
+
+CTA:
+position: [0, -0.1, 0]
+rotation: [0, 0, 0]
+scale: 1.15
+
+These values can be adjusted visually.
+
+
+GSAP / SCROLLTRIGGER REQUIREMENTS
+---------------------------------
+Set up GSAP and ScrollTrigger in a client component.
+
+Requirements:
+- Register ScrollTrigger once
+- Use useLayoutEffect or useGSAP pattern
+- Clean up animations on unmount
+- Use matchMedia for responsive behavior
+- Disable or simplify heavy pinned animations on mobile
+
+Scroll animations:
+1. Hero reveal timeline
+2. Camera transition timeline across sections
+3. Text reveal animations
+4. Floating labels stagger animation
+5. Video cards reveal and orbit animation
+6. Metrics pop-in animation
+7. Results counters
+8. Case study card reveal
+9. Process timeline animation
+10. Final CTA reveal
+
+Smooth scroll:
+- Use Lenis
+- Sync Lenis with GSAP ScrollTrigger
+- Make sure ScrollTrigger.refresh() works correctly
+
+
+MOTION DESIGN DETAILS
+---------------------
+General rules:
+- Smooth easing only
+- Avoid bouncy childish effects
+- Use power3.out, power4.out, expo.out
+- Text should reveal cleanly, not randomly
+- Cards should move subtly, not fly around aggressively
+- Use opacity, y, scale and blur carefully
+
+Hero animation timing:
+- Logo/navbar fade: 0.4s
+- Headline reveal: staggered 0.12s per line
+- Subheadline: 0.5s after headline
+- Buttons: 0.2s after subheadline
+- Camera: scale/rotate in 1.2s
+
+Scroll transitions:
+- Camera movement should be scrubbed smoothly with scroll
+- Use scrub: 1 or scrub: 1.5
+- Pinned story sections can use pin: true only on desktop
+
+Microinteractions:
+- Buttons glow on hover
+- Cards lift on hover
+- Project cards tilt slightly on mouse move
+- Navbar background appears after scroll
+- Cursor glow optional but keep subtle
+
+
+RESPONSIVE REQUIREMENTS
+-----------------------
+Desktop:
+- Full 3D storytelling experience
+- Pinned sections allowed
+- Floating cards and metrics visible
+- Large typography
+
+Tablet:
+- Reduce camera size
+- Keep scroll animations but simplify orbit
+- Avoid overcrowding
+
+Mobile:
+- Camera still visible but less dominant
+- No heavy pinned scroll sections if performance suffers
+- Stack all content vertically
+- Convert horizontal process to vertical process
+- Reduce floating labels/cards count
+- Keep page fast and usable
+
+Use CSS media queries and GSAP matchMedia.
+
+
+PERFORMANCE REQUIREMENTS
+------------------------
+- Lazy load 3D scene
+- Use Suspense fallback
+- Use compressed GLB later if model is added
+- Avoid huge textures
+- Reduce lights and shadows on mobile
+- Use devicePixelRatio limit on Canvas, e.g. dpr={[1, 1.5]}
+- Avoid too many particles
+- Avoid massive DOM animation loops
+- Prefer transform and opacity animations
+- Respect prefers-reduced-motion
+
+If user has prefers-reduced-motion:
+- disable scroll-scrub camera movement
+- show static camera
+- keep simple fades only
+
+
+ACCESSIBILITY REQUIREMENTS
+--------------------------
+- Use semantic HTML
+- Buttons and links must be keyboard accessible
+- Add aria-labels where needed
+- Maintain contrast
+- Avoid text only in images
+- Provide reduced motion fallback
+- Keep CTA links clear
+
+
+SEO REQUIREMENTS
+----------------
+Add metadata:
+Title:
+“VS Agency — Video Content Agency”
+
+Description:
+“VS Agency creates high-performing short-form videos, Instagram Reels and content systems for creators, brands and local businesses.”
+
+Use proper headings:
+- One H1 in hero
+- H2 for each section
+
+
+SUGGESTED FILE STRUCTURE
+------------------------
+app/
+  layout.tsx
+  page.tsx
+  globals.css
+
+components/
+  Navbar.tsx
+  Hero.tsx
+  Scene3D.tsx
+  CameraModel.tsx
+  ScrollStory.tsx
+  FloatingLabels.tsx
+  VideoCards.tsx
+  Results.tsx
+  Services.tsx
+  CaseStudies.tsx
+  Process.tsx
+  CTA.tsx
+  Footer.tsx
+  SmoothScrollProvider.tsx
+
+lib/
+  gsap.ts
+  data.ts
+
+public/
+  models/
+    README.txt
+  videos/
+    placeholder-1.mp4
+  images/
+    placeholder-work-1.jpg
+
+
+DATA STRUCTURE
+--------------
+Create a data.ts file for reusable content.
+
+Example data:
+
+services = [
+  {
+    title: 'Short-Form Video Editing',
+    description: 'High-retention edits for Reels, TikTok and Shorts with strong hooks, pacing, captions and sound design.'
+  },
+  ...
+]
+
+caseStudies = [
+  {
+    title: 'Barber Brand Reel',
+    category: 'Local Business',
+    metric: '+82K Views',
+    type: 'Reel Preview'
+  },
+  ...
+]
+
+processSteps = [
+  {
+    number: '01',
+    title: 'Strategy',
+    description: 'We define the goal, audience, offer, hooks and content angle.'
+  },
+  ...
+]
+
+
+DESIGN DETAILS TO IMPLEMENT
+---------------------------
+Global background:
+- Add fixed background gradient
+- Add subtle radial glow layers
+- Add noise overlay using CSS pseudo-element
+
+Example effects:
+- .noise overlay with opacity 0.035
+- radial-gradient circle at 70% 20% with blue/violet glow
+- vignette using inset box-shadow
+
+Cards:
+- background rgba(255,255,255,0.04)
+- border 1px solid rgba(255,255,255,0.08)
+- border-radius 24px
+- backdrop-filter blur(20px)
+- hover border rgba(255,255,255,0.18)
+
+Buttons:
+Primary:
+- white background
+- black text
+- rounded-full
+- hover scale 1.03
+- subtle glow
+
+Secondary:
+- transparent
+- white border
+- white text
+- hover background rgba(255,255,255,0.08)
+
+
+COPYWRITING — FINAL TEXT CONTENT
+--------------------------------
+Hero:
+Eyebrow: VIDEO AGENCY FOR MODERN BRANDS
+H1: We Turn Attention Into Content.
+Paragraph: VS Agency creates cinematic short-form videos for creators, Instagram accounts and local businesses that want to stand out online.
+CTA 1: Start a Project
+CTA 2: View Work
+
+Capture:
+Eyebrow: 01 / CAPTURE
+H2: First, we capture the story.
+Paragraph: Every high-performing video starts with a clear idea. We shape the concept, direction and visual language before the edit even begins.
+
+Edit:
+Eyebrow: 02 / EDIT
+H2: Then we cut it into scroll-stopping content.
+Paragraph: We turn raw ideas, footage and brand moments into short-form videos designed for retention, rhythm and clarity.
+
+Distribute:
+Eyebrow: 03 / DISTRIBUTE
+H2: Built for platforms where attention moves fast.
+Paragraph: Your content does not just need to look good. It needs to move, convert and stay memorable inside the feed.
+
+Results:
+Eyebrow: RESULTS
+H2: Content that looks good and performs.
+Paragraph: From local businesses to creators, our videos are built to make people stop, watch and take action.
+
+Services:
+Eyebrow: SERVICES
+H2: Everything your content needs.
+Paragraph: Strategy, editing, motion design and consistent delivery for brands that want to show up online with confidence.
+
+Work:
+Eyebrow: WORK
+H2: Selected work.
+Paragraph: Examples of content formats we create for brands, creators and local businesses.
+
+Process:
+Eyebrow: PROCESS
+H2: From idea to published content.
+Paragraph: A clear workflow that takes your content from rough idea to polished videos ready for the feed.
+
+CTA:
+H2: Ready to make your brand impossible to ignore?
+Paragraph: Let’s build a content system that makes people stop scrolling, remember your brand and take action.
+Button: Book a Call
+
+Footer:
+VS Agency — Cinematic content for modern brands.
+
+
+IMPLEMENTATION STEPS FOR CLAUDE CODE
+------------------------------------
+1. Create the Next.js project structure if it does not exist.
+2. Install dependencies:
+   - three
+   - @react-three/fiber
+   - @react-three/drei
+   - gsap
+   - lenis
+   - framer-motion optional
+3. Configure Tailwind CSS.
+4. Create global styles, font setup, background effects and utility classes.
+5. Build the data.ts file with services, work and process data.
+6. Build Navbar component.
+7. Build Hero component.
+8. Build Scene3D and CameraModel placeholder.
+9. Connect GSAP ScrollTrigger to the 3D camera object.
+10. Build ScrollStory sections for Capture, Edit and Distribute.
+11. Add floating labels and floating video cards.
+12. Build Results section with animated counters.
+13. Build Services grid.
+14. Build CaseStudies grid with reel cards.
+15. Build Process timeline.
+16. Build Final CTA.
+17. Build Footer.
+18. Add responsive behavior.
+19. Add reduced-motion support.
+20. Test scroll behavior and fix layout issues.
+21. Make the final design feel premium, not like a template.
+
+
+IMPORTANT FINAL QUALITY BAR
+---------------------------
+The final homepage should feel like a high-budget creative agency page.
+
+Do not make it look like:
+- a basic SaaS landing page
+- a generic agency template
+- a cheap 3D demo
+- a normal portfolio
+
+It should feel like:
+- Awwwards
+- Apple product page
+- Porsche digital experience
+- premium film production studio
+- futuristic content agency
+
+Focus heavily on:
+- first impression
+- spacing
+- typography
+- scroll rhythm
+- smooth camera movement
+- cinematic lighting
+- visual storytelling
+- premium details
+
+The 3D camera is not just decoration. It is the main visual character of the website.
+It should guide the visitor through the whole story:
+Capture -> Edit -> Distribute -> Results -> CTA
+
+
+EXTRA POLISH IDEAS
+------------------
+Add if possible:
+- subtle custom cursor glow
+- animated line masks for headings
+- floating dust/particles near the camera
+- lens flare effect when entering CTA
+- magnetic CTA buttons
+- small loading animation before 3D scene appears
+- scroll progress indicator
+- hover tilt on case study cards
+- subtle sound wave line animation in edit section
+- animated caption blocks on video cards
+- section transitions with gradient wipes
+
+Keep all extras subtle and premium.
+Do not overdo it.
+
+
+FINAL PROMPT TO FOLLOW
+----------------------
+Build this as a complete, polished, responsive and production-ready homepage. Make the website feel premium, cinematic and immersive. The main character is a 3D cinema camera that animates through the page with GSAP ScrollTrigger. Use placeholder content where needed, but structure the code so real assets can easily be added later. Prioritize design quality, motion quality and a strong Awwwards-style first impression.
