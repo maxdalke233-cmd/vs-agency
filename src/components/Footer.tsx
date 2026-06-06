@@ -21,7 +21,7 @@ export default function Footer() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-[var(--text-2)] transition-colors hover:text-white"
+              className="text-sm text-[var(--text-2)] transition-colors hover:text-[var(--text)]"
             >
               {l.label}
             </a>
@@ -34,7 +34,7 @@ export default function Footer() {
             <a
               key={s}
               href="#"
-              className="text-sm text-[var(--text-2)] transition-colors hover:text-white"
+              className="text-sm text-[var(--text-2)] transition-colors hover:text-[var(--text)]"
             >
               {s}
             </a>
@@ -50,7 +50,7 @@ export default function Footer() {
           3D-Kamera:{" "}
           <a
             href="https://sketchfab.com/3d-models/cinema-camera-e1fec87c8ae0487f964d20de2559aa62"
-            className="underline transition-colors hover:text-white"
+            className="underline transition-colors hover:text-[var(--text)]"
             target="_blank"
             rel="noopener noreferrer"
           >

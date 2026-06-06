@@ -26,7 +26,6 @@ export default function Hero() {
         .from("[data-hero='scroll']", { opacity: 0, duration: 0.8 }, "-=0.2");
 
       // Fade the scroll indicator out as the user starts scrolling
-      // so it doesn't appear as a divider at the Hero → Capture boundary
       gsap.to("[data-hero='scroll']", {
         opacity: 0,
         ease: "none",
@@ -68,7 +67,7 @@ export default function Hero() {
           Videoagentur für Marken mit Anspruch
         </p>
 
-        <h1 className="max-w-[15ch] font-display text-[length:var(--fs-hero)] font-semibold leading-[0.98] tracking-[-0.03em]">
+        <h1 className="max-w-[15ch] font-display text-[length:var(--fs-hero)] font-semibold leading-[0.98] tracking-[-0.03em] text-white">
           <span className="reveal-line">
             <span data-hero="line" className="block">
               Wir verwandeln
@@ -88,7 +87,7 @@ export default function Hero() {
 
         <p
           data-hero="sub"
-          className="mt-7 max-w-[46ch] text-[length:var(--fs-body)] text-[var(--text-2)]"
+          className="mt-7 max-w-[46ch] text-[length:var(--fs-body)] text-white/70"
         >
           VS Agency produziert cinematische Short-Form-Videos für Creator,
           Instagram-Seiten und lokale Unternehmen, die online auffallen wollen.

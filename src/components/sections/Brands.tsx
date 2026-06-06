@@ -62,10 +62,10 @@ export default function Brands() {
     <section
       id="brands"
       ref={sectionRef}
-      className="overflow-hidden pb-24 pt-0 md:pb-32"
+      className="relative z-[1] overflow-hidden pb-24 pt-24 md:pb-32 md:pt-32"
     >
       {/* Heading */}
-      <div className="mx-auto mb-12 max-w-[1400px] px-6 md:mb-16 md:px-10">
+      <div className="relative mx-auto mb-16 max-w-[1400px] px-6 md:mb-20 md:px-10">
         <p className="eyebrow mb-4">Unsere Kunden</p>
         <h2 className="font-display text-[length:var(--fs-h2)] font-semibold leading-[1.05] tracking-[-0.03em]">
           Marken, die auf{" "}
@@ -81,21 +81,29 @@ export default function Brands() {
               ref={(el) => {
                 rowRefs.current[rowIndex] = el;
               }}
-              className="flex w-max gap-5"
+              className="flex w-max gap-4"
               style={{ willChange: "transform" }}
             >
               {[...brands, ...brands].map((brand, j) => (
                 <div
                   key={j}
-                  className="glass flex select-none items-center gap-4 rounded-full px-6 py-4"
+                  className="flex select-none items-center gap-3 rounded-full px-5 py-3"
+                  style={{
+                    background: "#0a0a0a",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                  }}
                 >
                   <span
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-bold text-white"
-                    style={{ backgroundColor: brand.color }}
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold"
+                    style={{
+                      background: "rgba(255,255,255,0.10)",
+                      border: "1px solid rgba(255,255,255,0.18)",
+                      color: "rgba(255,255,255,0.85)",
+                    }}
                   >
                     {brand.name[0]}
                   </span>
-                  <span className="whitespace-nowrap text-base font-medium text-white/80">
+                  <span className="whitespace-nowrap text-sm font-medium text-white/90">
                     {brand.name}
                   </span>
                 </div>

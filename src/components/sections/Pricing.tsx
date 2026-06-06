@@ -19,6 +19,7 @@ const smoothstep = (x: number) => {
  */
 export default function Pricing() {
   const flashRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const hudRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,6 +40,12 @@ export default function Pricing() {
         flash.style.transform = `scale(${1 + reveal * 0.4})`;
       }
 
+      // As the dive completes, fade the whole runway section to solid white so
+      // the whiteout dissolves into the white post-portal region — covering the
+      // dark fixed background even after the sticky panel un-sticks at the end.
+      const section = sectionRef.current;
+      if (section) section.style.backgroundColor = `rgba(255,255,255,${reveal})`;
+
       // 3D canvas dissolves exactly as the whiteout fills.
       // Only take over opacity once the portal is actually running — before that,
       // BgTransition owns the canvas fade for the light-bg scroll phase.
@@ -58,8 +65,10 @@ export default function Pricing() {
   }, []);
 
   return (
-    <section id="portal-runway" className="relative h-[200vh]">
-      <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden px-6 md:px-10">
+    <section id="portal-runway" ref={sectionRef} className="relative h-[200vh]">
+      <div
+        className="sticky top-0 flex h-svh items-center justify-center overflow-hidden px-6 md:px-10"
+      >
         {/* white-blue whiteout — fully covers from the centre outward */}
         <div
           ref={flashRef}

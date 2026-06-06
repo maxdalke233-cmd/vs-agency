@@ -61,7 +61,7 @@ export default function CTA() {
 
         <p
           data-cta="sub"
-          className="mx-auto mt-7 max-w-[48ch] text-[length:var(--fs-body)] text-[var(--text-2)]"
+          className="mx-auto mt-7 max-w-[48ch] text-[length:var(--fs-body)] text-white"
         >
           Lassen Sie uns ein Content-System bauen, das den Scroll stoppt, Ihre
           Marke im Kopf verankert und Menschen zum Handeln bringt.

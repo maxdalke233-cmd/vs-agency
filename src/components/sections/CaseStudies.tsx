@@ -10,13 +10,16 @@ function CaseCard({
   title,
   category,
   metric,
+  image,
 }: {
   title: string;
   category: string;
   metric: string;
+  image?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const seed = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const src = image ?? `https://picsum.photos/seed/${seed}/800/1000`;
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -41,7 +44,7 @@ function CaseCard({
       {/* 🔁 REPLACE with real work video/poster later */}
       <div
         className="absolute inset-0 bg-cover bg-center brightness-90 contrast-125 grayscale transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
-        style={{ backgroundImage: `url(https://picsum.photos/seed/${seed}/800/1000)` }}
+        style={{ backgroundImage: `url(${src})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
       <div className="absolute inset-0 bg-blue/0 transition-colors duration-500 group-hover:bg-blue/5" />

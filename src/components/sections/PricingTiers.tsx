@@ -66,7 +66,7 @@ export default function PricingTiers() {
                   Beliebt
                 </span>
               )}
-              <p className="font-display text-lg font-medium text-white">{t.name}</p>
+              <p className="font-display text-lg font-medium text-[var(--text)]">{t.name}</p>
               <p className="mt-1 text-sm text-[var(--text-2)]">{t.tagline}</p>
               <p className="mt-6 font-display text-4xl font-semibold tracking-tight">
                 {t.price}

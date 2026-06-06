@@ -55,7 +55,7 @@ export default function About() {
           style={{ writingMode: "vertical-rl" }}
         >
           <span className="text-gradient">VS</span>{" "}
-          <span className="text-white/10">AGENCY</span>
+          <span className="text-gradient">AGENCY</span>
         </div>
 
         {/* read-through bio */}

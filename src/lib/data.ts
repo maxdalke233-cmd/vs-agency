@@ -103,12 +103,10 @@ export const services = [
 ];
 
 export const caseStudies = [
-  { title: "Barber Brand Reel", category: "Local Business", metric: "+82K Views" },
-  { title: "Gym Transformation Ad", category: "Fitness", metric: "3.2x Reach" },
-  { title: "Creator Podcast Clips", category: "Personal Brand", metric: "24 Clips Delivered" },
-  { title: "Restaurant Launch Video", category: "Local Business", metric: "+41K Views" },
-  { title: "Car Detailer Campaign", category: "Automotive", metric: "19 Leads" },
-  { title: "Product Promo Reel", category: "E-Commerce", metric: "+12% CTR" },
+  { title: "Visitenkarte", category: "Local Business", metric: "+82K Views", image: "/barber-brand-reel.png" },
+  { title: "Insta Reels", category: "Fitness", metric: "3.2x Reach", image: "/gym-transformation-ad.png" },
+  { title: "Social Media pflegen", category: "Personal Brand", metric: "24 Clips Delivered", image: "/creator-podcast-clips.png" },
+  { title: "Websites für lokale Unternehmen", category: "Local Business", metric: "+41K Views", image: "/restaurant-launch-video.png" },
 ];
 
 // 🔁 REPLACE with real pricing — placeholder tiers for now

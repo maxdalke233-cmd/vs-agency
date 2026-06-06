@@ -9,12 +9,23 @@ export default function BgTransition() {
     const overlay = document.getElementById("bg-white-overlay");
     if (!gradient || !overlay) return;
 
-    // Single source of truth for the light theme: the body class strictly
-    // follows the white overlay's ACTUAL opacity. This makes it toggle
-    // correctly in both scroll directions — no separate trigger to desync.
+    // Single source of truth for the light theme. Uses gsap.getProperty
+    // (reads from GSAP's internal state, no DOM style flush) and guards
+    // the classList toggle so it only fires on actual state changes.
+    let isLight = false;
     const syncTheme = () => {
-      const o = parseFloat(getComputedStyle(overlay).opacity || "0");
-      document.body.classList.toggle("light-bg", o > 0.5);
+      const o = gsap.getProperty(overlay, "opacity") as number;
+      // Hysteresis: add light-bg early (overlay > 0.5) so text turns dark
+      // while the white phase is clearly active; remove it only when the
+      // overlay is nearly gone (< 0.05) so text never turns white while
+      // still visible against the fading overlay.
+      if (!isLight && o > 0.5) {
+        isLight = true;
+        document.body.classList.add("light-bg");
+      } else if (isLight && o < 0.18) {
+        isLight = false;
+        document.body.classList.remove("light-bg");
+      }
     };
 
     // ── One master timeline for the whole light phase ────────────────────
@@ -49,6 +60,18 @@ export default function BgTransition() {
       .to(gradient, { opacity: 1, duration: EXIT * 0.7 }, exitAt + EXIT * 0.3)
       .to(overlay, { opacity: 0, duration: 0.3 }); // dark-hold tail
 
+    // Hard reset of the theme at both scroll boundaries. The scrubbed
+    // hysteresis in syncTheme only runs while the trigger is actively
+    // updating — scroll past a boundary faster than the scrub catches up and
+    // `light-bg` gets stuck, leaving the dark hero with light-theme buttons
+    // (white-on-white → invisible dark fill). onLeaveBack (back above Capture =
+    // hero) and onLeave (past Results) force the dark theme so the hero CTAs
+    // always render as the bright white/glass pair.
+    const setDark = () => {
+      isLight = false;
+      document.body.classList.remove("light-bg");
+    };
+
     ScrollTrigger.create({
       trigger: "#capture",
       start: "top 95%",
@@ -57,6 +80,8 @@ export default function BgTransition() {
       scrub: 1,
       animation: tl,
       onUpdate: syncTheme,
+      onLeaveBack: setDark,
+      onLeave: setDark,
     });
   });
 

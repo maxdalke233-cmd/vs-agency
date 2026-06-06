@@ -63,6 +63,12 @@ export default function StrokeTrail() {
     let h = 0;
     let dpr = 1;
 
+    // Offscreen buffer: body + head drawn at opacity 1, then blitted
+    // to the main canvas with globalAlpha = alpha. This avoids the
+    // double-alpha triangle where the head circle overlaps the body.
+    const buf = document.createElement("canvas");
+    const bCtx = buf.getContext("2d")!;
+
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       w = window.innerWidth;
@@ -72,6 +78,9 @@ export default function StrokeTrail() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      buf.width = canvas.width;
+      buf.height = canvas.height;
+      bCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
     window.addEventListener("resize", resize);
@@ -184,25 +193,30 @@ export default function StrokeTrail() {
         right.push({ x: spine[i].x - nx * hw, y: spine[i].y - ny * hw });
       }
 
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = ROYAL;
-      ctx.shadowColor = "rgba(79,139,255,0.45)";
-      ctx.shadowBlur = 24;
-
-      ctx.beginPath();
-      // round head cap
       const head = spine[0];
       const r = widthAt(0) / 2;
-      ctx.moveTo(left[0].x, left[0].y);
-      for (let i = 1; i < left.length; i++) ctx.lineTo(left[i].x, left[i].y);
-      for (let i = right.length - 1; i >= 0; i--) ctx.lineTo(right[i].x, right[i].y);
-      ctx.closePath();
-      ctx.fill();
-      // explicit round head so the blob reads as a head
-      ctx.beginPath();
-      ctx.arc(head.x, head.y, r, 0, Math.PI * 2);
-      ctx.fill();
+
+      // Draw at full opacity on offscreen buffer, then blit with globalAlpha.
+      // This gives uniform transparency across the whole snake — no
+      // double-alpha artifact where the head circle overlaps the body.
+      bCtx.clearRect(0, 0, w, h);
+      bCtx.fillStyle = ROYAL;
+      bCtx.shadowColor = "rgba(79,139,255,0.45)";
+      bCtx.shadowBlur = 24;
+
+      bCtx.beginPath();
+      bCtx.moveTo(left[0].x, left[0].y);
+      for (let i = 1; i < left.length; i++) bCtx.lineTo(left[i].x, left[i].y);
+      for (let i = right.length - 1; i >= 0; i--) bCtx.lineTo(right[i].x, right[i].y);
+      bCtx.closePath();
+      bCtx.fill();
+      bCtx.beginPath();
+      bCtx.arc(head.x, head.y, r, 0, Math.PI * 2);
+      bCtx.fill();
+
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.drawImage(buf, 0, 0);
       ctx.restore();
 
       // light up the text the snake is currently passing behind

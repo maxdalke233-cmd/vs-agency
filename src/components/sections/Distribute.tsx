@@ -19,9 +19,23 @@ const RING_POS = [
 
 export default function Distribute() {
   const ref = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
+      // Fade heading out as section scrolls off the top
+      gsap.to(headingRef.current, {
+        opacity: 0,
+        y: -40,
+        ease: "power1.in",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top top",
+          end: "30% top",
+          scrub: true,
+        },
+      });
+
       const chips = gsap.utils.toArray<HTMLElement>("[data-metric]");
       gsap.from(chips, {
         opacity: 0,
@@ -53,11 +67,13 @@ export default function Distribute() {
       className="relative flex min-h-svh items-center px-6 md:px-10"
     >
       <div className="mx-auto grid w-full max-w-[1400px] items-center gap-10 md:grid-cols-2">
-        <Heading
-          eyebrow="03 / Ausspielen"
-          lines={["Gebaut für", "Plattformen, auf denen", "Aufmerksamkeit rast."]}
-          body="Ihr Content muss nicht nur gut aussehen. Er muss bewegen, überzeugen und im Feed im Kopf bleiben."
-        />
+        <div ref={headingRef}>
+          <Heading
+            eyebrow="03 / Ausspielen"
+            lines={["Gebaut für", "Plattformen, auf denen", "Aufmerksamkeit rast."]}
+            body="Ihr Content muss nicht nur gut aussehen. Er muss bewegen, überzeugen und im Feed im Kopf bleiben."
+          />
+        </div>
 
         {/* orbiting metrics around the camera */}
         <div className="pointer-events-none relative hidden h-[68vh] md:block">

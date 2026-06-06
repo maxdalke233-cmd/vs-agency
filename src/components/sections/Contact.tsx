@@ -14,7 +14,7 @@ const SERVICES = [
 ];
 
 const inputClass =
-  "w-full rounded-xl border border-[var(--line)] bg-[rgba(255,255,255,0.03)] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-[var(--text-muted)] focus:border-blue/60";
+  "w-full rounded-xl border border-[var(--line)] bg-[rgba(0,0,0,0.03)] px-4 py-3 text-sm text-[var(--text)] outline-none transition-colors placeholder:text-[var(--text-muted)] focus:border-blue/60";
 
 type Form = {
   name: string;

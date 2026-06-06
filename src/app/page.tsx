@@ -1,3 +1,4 @@
+import type React from "react";
 import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import SceneMount from "@/components/canvas/SceneMount";
@@ -41,13 +42,29 @@ export default function Home() {
         <Process />
         <CTA />
         <Pricing />
-        <Brands />
-        <About />
-        <PricingTiers />
-        <Contact />
-      </main>
 
-      <Footer />
+        {/* Post-portal: permanent WHITE region. Opaque bg hides the fixed
+            dark 3D canvas + gradient behind it; --bg/--bg-2 overridden inline
+            so the scroll-phase .light-bg behavior on <body> stays untouched. */}
+        <div
+          className="light-bg theme-static relative"
+          style={
+            {
+              zIndex: 1,
+              background: "#ffffff",
+              color: "var(--text)",
+              "--bg": "#ffffff",
+              "--bg-2": "#f5f5f5",
+            } as React.CSSProperties
+          }
+        >
+          <Brands />
+          <About />
+          <PricingTiers />
+          <Contact />
+          <Footer />
+        </div>
+      </main>
     </>
   );
 }
