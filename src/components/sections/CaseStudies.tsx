@@ -9,13 +9,16 @@ import { caseStudies } from "@/lib/data";
 function CaseCard({
   title,
   category,
-  metric,
   image,
+  href,
+  cta,
 }: {
   title: string;
   category: string;
-  metric: string;
+  metric?: string;
   image?: string;
+  href?: string;
+  cta?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const seed = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -49,16 +52,29 @@ function CaseCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
       <div className="absolute inset-0 bg-blue/0 transition-colors duration-500 group-hover:bg-blue/5" />
 
-      <span className="absolute right-4 top-4 rounded-full bg-black/45 px-3 py-1 text-xs font-medium text-blue backdrop-blur">
-        {metric}
-      </span>
-
       {/* play overlay */}
       <div className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 opacity-0 backdrop-blur transition-all duration-300 group-hover:scale-110 group-hover:opacity-100">
         <span className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-white" />
       </div>
 
-      <div className="absolute inset-x-5 bottom-5">
+      {/* whole card clickable when a link is set */}
+      {href && (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${title} – ${cta ?? "Besuche die Seite"}`}
+          className="absolute inset-0 z-10"
+        />
+      )}
+
+      <div className="pointer-events-none absolute inset-x-5 bottom-5 z-20">
+        {cta && (
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-medium text-black transition-transform duration-300 group-hover:-translate-y-0.5">
+            {cta}
+            <span aria-hidden>&#8599;</span>
+          </span>
+        )}
         <p className="text-xs uppercase tracking-[0.18em] text-white/55">{category}</p>
         <h3 className="mt-1 font-display text-lg font-medium text-white">{title}</h3>
       </div>

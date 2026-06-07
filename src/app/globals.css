@@ -392,6 +392,34 @@ html.lenis body {
 }
 
 
+/* ------------------------------------------------------------------ */
+/*  Mobile hero — breathing room                                      */
+/* ------------------------------------------------------------------ */
+/* On narrow phones the fluid hero size ran edge-to-edge and stacked the
+   headline into 4 cramped lines. Pull the size down, loosen the leading and
+   give the copy a touch more horizontal margin so it reads clean. Desktop
+   (handled by the global --fs-hero clamp) is untouched. */
+@media (max-width: 640px) {
+  :root {
+    --fs-hero: clamp(1.9rem, 6.5vw + 0.4rem, 2.6rem);
+  }
+  #top h1 {
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+  }
+  #top {
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+  }
+  #top [data-hero="sub"] {
+    margin-top: 1.4rem;
+  }
+  #top [data-hero="cta"] {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -106,14 +106,14 @@ export const caseStudies = [
   { title: "Visitenkarte", category: "Local Business", metric: "+82K Views", image: "/barber-brand-reel.png" },
   { title: "Insta Reels", category: "Fitness", metric: "3.2x Reach", image: "/gym-transformation-ad.png" },
   { title: "Social Media pflegen", category: "Personal Brand", metric: "24 Clips Delivered", image: "/creator-podcast-clips.png" },
-  { title: "Websites für lokale Unternehmen", category: "Local Business", metric: "+41K Views", image: "/restaurant-launch-video.png" },
+  { title: "Websites von dalkeweb", category: "Partnerunternehmen", metric: "+41K Views", image: "/restaurant-launch-video.png", href: "https://www.dalkeweb.de", cta: "Besuche die Seite" },
 ];
 
 // 🔁 REPLACE with real pricing — placeholder tiers for now
 export const pricingTiers = [
   {
     name: "Starter",
-    price: "€900",
+    price: "€700",
     period: "/Monat",
     tagline: "Für Marken, die regelmäßig sichtbar werden wollen.",
     features: ["8 Short-Form-Videos / Monat", "Schnitt + Untertitel", "1 Korrekturschleife", "Lieferung in 48 h"],
@@ -121,7 +121,7 @@ export const pricingTiers = [
   },
   {
     name: "Growth",
-    price: "€1,900",
+    price: "€1,500",
     period: "/Monat",
     tagline: "Unser meistgewähltes System.",
     features: [
@@ -132,14 +132,6 @@ export const pricingTiers = [
       "Monatliches Performance-Review",
     ],
     highlighted: true,
-  },
-  {
-    name: "Studio",
-    price: "Individuell",
-    period: "",
-    tagline: "Komplettes Content-System, End-to-End.",
-    features: ["Unbegrenzter Umfang", "Fester Editor + Stratege", "Lieferung am selben Tag", "Dreh vor Ort"],
-    highlighted: false,
   },
 ];
 
