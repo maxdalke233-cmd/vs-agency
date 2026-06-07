@@ -46,7 +46,11 @@ export default function About() {
   );
 
   return (
-    <section id="about" ref={ref} className="relative overflow-hidden">
+    <section
+      id="about"
+      ref={ref}
+      className="relative overflow-hidden bg-white"
+    >
       <div className="mx-auto flex min-h-svh w-full max-w-[1400px] items-center gap-6 px-6 md:gap-16 md:px-10">
         {/* vertical wordmark */}
         <div

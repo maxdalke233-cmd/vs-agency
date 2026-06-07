@@ -16,7 +16,6 @@ import Process from "@/components/sections/Process";
 import CTA from "@/components/sections/CTA";
 import Pricing from "@/components/sections/Pricing";
 import About from "@/components/sections/About";
-import Portrait from "@/components/sections/Portrait";
 import PricingTiers from "@/components/sections/PricingTiers";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
@@ -58,7 +57,6 @@ export default function Home() {
             } as React.CSSProperties
           }
         >
-          <Portrait />
           <About />
           <PricingTiers />
           <Contact />

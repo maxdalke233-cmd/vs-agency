@@ -104,7 +104,7 @@ export default function Contact() {
         `Leistung: ${form.service || "—"}\n\n` +
         `${form.message}`,
     );
-    window.location.href = `mailto:hello@vsagency.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:vladislavs.stolarevskis@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -142,8 +142,8 @@ export default function Contact() {
             <p className="mt-3 text-[var(--text-2)]">
               Ihr E-Mail-Programm sollte sich mit der fertigen Nachricht geöffnet haben.
               Falls nicht, erreichen Sie uns unter{" "}
-              <a className="text-blue underline" href="mailto:hello@vsagency.com">
-                hello@vsagency.com
+              <a className="text-blue underline" href="mailto:vladislavs.stolarevskis@gmail.com">
+                vladislavs.stolarevskis@gmail.com
               </a>
               .
             </p>
