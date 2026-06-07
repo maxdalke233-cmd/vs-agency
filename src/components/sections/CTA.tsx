@@ -68,7 +68,7 @@ export default function CTA() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a data-cta="btn" href="mailto:hello@vsagency.com" className="btn btn-primary">
+          <a data-cta="btn" href="mailto:vladislavs.stolarevskis@gmail.com" className="btn btn-primary">
             Termin buchen
           </a>
           <a data-cta="btn" href="#work" className="btn btn-secondary">
